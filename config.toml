@@ -1,0 +1,31 @@
+baseURL = "https://yourusername.github.io/"
+languageCode = "en-us"
+title = "Kim Rivera"
+theme = "barks"  # because this repo contains the Barks theme files
+
+[params.head]
+author = "Kim Rivera"
+description = "Wildlife ecologist | Urban Wildlife Information Network (UWIN)"
+keywords = ["wildlife", "urban ecology", "invasive species", "One Health"]
+
+[params.typography]
+title_font = "Bree Serif"
+body_font  = "Source Sans Pro"
+
+[params.colors]
+theme_color      = "#2f4858"
+background_color = "#fcfbf9"
+text_color       = "#2b2b2b"
+link_color       = "#60c17d"
+
+[params.social.email]
+name   = "Email"
+class  = "fas fa-envelope"
+url    = "mailto:kimrivera@example.com"
+weight = 1
+
+[params.social.github]
+name   = "GitHub"
+class  = "fab fa-github"
+url    = "https://github.com/yourusername"
+weight = 2

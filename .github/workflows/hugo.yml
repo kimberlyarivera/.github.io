@@ -2,8 +2,8 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [ "main" ]   # change to "master" if your default branch is master
-  workflow_dispatch:        # keeps the manual run button
+    branches: [ "main" ]        # change to "master" if your default branch is master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,14 +21,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Hugo
+      - name: Setup Go (for Hugo Modules)
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21.x'
+
+      - name: Setup Hugo (extended)
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build
-        run: hugo --minify
+      # --- DEBUG: show environment and files so we can see what's wrong ---
+      - name: Show Hugo environment
+        run: hugo env
+      - name: Show repo tree (top level)
+        run: ls -la
+      - name: Show content tree (if exists)
+        run: ls -la content || true
+      - name: Show config files
+        run: ls -la config.* || true
+
+      # --- If using Hugo Modules to pull the Barks theme ---
+      - name: Get theme via Hugo Modules (safe even if not used)
+        run: hugo mod get -u || true
+
+      - name: Build (verbose)
+        run: hugo --minify -v
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

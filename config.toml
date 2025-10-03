@@ -1,11 +1,7 @@
-baseURL = "https://kimberlyarivera.github.io/"   # or "https://YOURUSER.github.io/REPO/"
+baseURL = "https://kimberlyarivera.github.io/"
 languageCode = "en-us"
-title = "Kimberly Rivera"
-
-# Use the Barks theme via Hugo Modules (no submodules needed)
+title = "Kim Rivera"
 theme = "github.com/timothygebhard/barks"
 
-# GitHub Pages runners use an ephemeral cache location — Hugo docs recommend this:
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
+[module.hugoVersion]
+  extended = true

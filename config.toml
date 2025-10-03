@@ -3,5 +3,6 @@ languageCode = "en-us"
 title = "Kim Rivera"
 theme = "github.com/timothygebhard/barks"
 
-[module.hugoVersion]
-  extended = true
+[module]
+  [module.hugoVersion]
+    extended = true

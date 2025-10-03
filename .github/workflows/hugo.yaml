@@ -2,8 +2,7 @@ name: Build and deploy
 
 on:
   push:
-    branches:
-      - master     # <-- match your default branch shown in the screenshot
+    branches: [ master ]
   workflow_dispatch:      # keep manual button too
 permissions:
   contents: read

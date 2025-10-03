@@ -1,7 +1,7 @@
 ---
 title: "Home"
-layout: "landing_page"    # special Barks landing layout
-image: "/images/hero.jpg" # optional; add a hero image later
+layout: "landing_page"   # Barks’ landing page layout
+image: "/images/hero.jpg" # optional; add later in static/images/
 ---
 
 # Hi, I'm Kim Rivera

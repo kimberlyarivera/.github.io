@@ -2,7 +2,7 @@ name: Build and deploy
 
 on:
   push:
-    branches: [ master ]       # your default branch is master
+    branches: [ master ]   # your default branch
   workflow_dispatch:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Go (needed for Hugo Modules)
+      - name: Setup Go (Hugo Modules need Go)
         uses: actions/setup-go@v5
         with:
           go-version: '1.21.x'
@@ -29,14 +29,28 @@ jobs:
       - name: Setup Hugo (extended)
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
-          extended: true   # Barks needs the extended build (SCSS)
+          hugo-version: '0.151.0'
+          extended: true
 
-      - name: Fetch theme modules
-        run: hugo mod get -u
+      # Helpful debug so you can see what's in the repo
+      - name: Show repo layout
+        run: |
+          echo "== top =="
+          ls -la
+          echo "== content =="
+          ls -la content || true
+          echo "== config =="
+          ls -la config.* || true
 
+      # Generate go.sum and download the theme; also vendors it for reliability
+      - name: Prepare modules
+        run: |
+          hugo mod tidy
+          hugo mod vendor
+
+      # Build with verbose logs so any error is obvious
       - name: Build
-        run: hugo --minify
+        run: hugo --minify -v
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

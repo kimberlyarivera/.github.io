@@ -1,4 +1,4 @@
-# Testing changes
+# Testing changes again
 title: "Home"
 layout: "landing_page"   # Barks’ landing page layout
 image: "/images/hero.jpg" # optional; add later in static/images/
